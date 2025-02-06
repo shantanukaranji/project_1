@@ -20,7 +20,8 @@ pipeline {
 
         stage('Test Code') {
             steps {
-                sh 'mvn install'
+                sh 'mvn clean test'
+                sh 'mvn package' 
                 
             }
         }
