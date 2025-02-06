@@ -13,14 +13,14 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/shantanukaranji/project_1.git'
+                git credentialsId: 'github-credentials', branch: 'main', url: 'https://github.com/shantanukaranji/project_1.git'
 
             }
         }
 
         stage('Test Code') {
             steps {
-                sh '/usr/share/maven/bin/mvninstall'
+                sh '/home/ubuntu/usr/share/maven/bin/mvn install'
                 
             }
         }
