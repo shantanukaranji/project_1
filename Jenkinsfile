@@ -20,7 +20,7 @@ pipeline {
 
         stage('Test Code') {
             steps {
-                sh 'sudo /home/ubuntu/usr/share/maven/bin/mvn install'
+                sh '/home/ubuntu/usr/share/maven/bin/mvn install'
                 
             }
         }
