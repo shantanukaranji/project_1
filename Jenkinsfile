@@ -22,9 +22,16 @@ pipeline {
             steps {
                 sh 'mvn clean test'
                 sh 'mvn package' 
-                
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml' // Archive test results
+                }
+                failure {
+                    echo "❌ Tests failed! Check reports for details."
+                }    
             }
         }
+        }    
 
         stage('Build Docker Image') {
             steps {
