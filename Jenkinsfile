@@ -2,6 +2,7 @@
 
 
 
+
 pipeline {
     agent any
 
@@ -18,20 +19,25 @@ pipeline {
             }
         }
 
-
-
-       stage('build') {
+        stage('Test Code') {
             steps {
                 sh 'mvn clean package' 
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml' // Archive test results
-                }
-                failure {
-                    echo " Tests failed! Check reports for details."
-                }    
+        }
+        }    
+
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t $IMAGE_NAME ."
             }
-}
-}  
-}        
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withDockerRegistry([credentialsId: 'docker-hub-creds', url: '']) {
+                    sh "docker login -u shant -p \$DOCKERHUB_CREDENTIALS_PSW"
+                    sh "docker push $IMAGE_NAME"
+                }
+            }
+        }
+    }
 }
