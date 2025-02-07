@@ -20,10 +20,9 @@ pipeline {
 
 
 
-       stage('Test Code') {
+       stage('build') {
             steps {
-                sh 'mvn clean test'
-                sh 'mvn package' 
+                sh 'mvn clean package' 
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml' // Archive test results
