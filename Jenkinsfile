@@ -27,7 +27,7 @@ pipeline {
                     junit '**/target/surefire-reports/*.xml' // Archive test results
                 }
                 failure {
-                    echo "❌ Tests failed! Check reports for details."
+                    echo " Tests failed! Check reports for details."
                 }    
             }
         }
