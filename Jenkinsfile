@@ -13,7 +13,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-creds') // Store credentials securely in Jenkins
         IMAGE_NAME = "shantanukaranji/project_1"
         CONTAINER_NAME = "project_1_container"
-        PORT_MAPPING = "8080:8080"
+        PORT_MAPPING = "8082:8082"
     }
 
     stages {
