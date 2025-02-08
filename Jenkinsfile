@@ -4,8 +4,11 @@
 
 
 pipeline {
-    agent any
-
+    agent {
+        node {
+            label 'maven_node'
+        }
+    }
     stages {
         stage('Checkout Code') {
             steps {
