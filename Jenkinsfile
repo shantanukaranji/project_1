@@ -39,7 +39,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'docker-hub-creds', url: '']) {
-                    sh "docker login -u shant -p \$DOCKERHUB_CREDENTIALS_PSW"
+                    sh "docker login -u shantanukaranji -p \$DOCKERHUB_CREDENTIALS_PSW"
                     sh "docker push $IMAGE_NAME"
                 }
             }
